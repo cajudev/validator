@@ -3,6 +3,7 @@
     "description": "Uma biblioteca que utiliza expressões regulares avançadas pré-construídas para facilitar a sua vida.",
     "keywords": ["validator", "composer", "php"],
     "license": "MIT",
+    "homepage": "https://github.com/cajudev/validator",
     "type": "library",
     "authors": [
         {
@@ -20,7 +21,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Caju\\Validator\\": "src/"
+            "Caju\\Validator\\": [
+                "src/",
+                "tests"
+            ]
         }
     }
 }
