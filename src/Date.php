@@ -22,6 +22,15 @@ class Date {
     private $month;
     private $year;
 
+    /**
+     * validate - Realiza a validação de uma data
+     *
+     * @param  mixed $date - A string contendo a data a ser validada
+     * @param  mixed $string - A string contendo o formato a ser analisado
+     *
+     * @return boolean
+     */
+    
     public function validate($date, $string) {
         $regex = $this->getRegex($string);
         if (preg_match($regex, $date, $match)) {
@@ -37,7 +46,7 @@ class Date {
         $this->month = $params['month'] ?? null;
         $this->year = $params['year'] ?? $params['Year'] ?? null;
     }
-
+    
     private function getRegex($string) {
         $regex = '/^';
         $regex .= self::REGEX[$string[0]];
@@ -49,17 +58,41 @@ class Date {
         return $regex;
     }
 
+    /**
+     * getDay
+     *
+     * @return string
+     */
+    
     public function getDay() {
         return $this->day ?? null;
     }
 
+    /**
+     * getMonth
+     *
+     * @return string
+     */
+    
     public function getMonth() {
         return $this->month ?? null;
     }
 
+    /**
+     * getYear
+     *
+     * @return string
+     */
+    
     public function getYear() {
         return $this->year ?? null;
     }
+
+    /**
+     * getDate
+     *
+     * @return string
+     */
 
     public function getDate() {
         return $this->date ?? null;
