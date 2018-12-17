@@ -5,8 +5,8 @@
     "type": "library",
     "authors": [
         {
-            "name": "caju/validator",
-            "email": "contato.richardlopes@outlook.com"
+            "name": "cajudev/validator",
+            "email": "cajudev@gmail.com"
         }
     ],
     "require": {
