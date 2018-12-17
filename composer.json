@@ -1,0 +1,23 @@
+{
+    "description": "Uma biblioteca que utiliza expressões regulares avançadas pré-construídas para facilitar a sua vida.",
+    "keywords": ["validator", "composer", "php"],
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "caju/validator",
+            "email": "contato.richardlopes@outlook.com"
+        }
+    ],
+    "require": {
+		"php": "^7"
+    },
+    "require-dev": {
+		"phpunit/phpunit": "^7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Caju\\Validator\\": "src/"
+        }
+    }
+}
