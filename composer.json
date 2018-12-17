@@ -10,6 +10,8 @@
             "email": "contato.richardlopes@outlook.com"
         }
     ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
 		"php": "^7"
     },
