@@ -1,4 +1,4 @@
-<?php namespace Caju\Validator;
+<?php namespace Cajudev\Validator;
 
 /**
  *

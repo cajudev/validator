@@ -1,5 +1,5 @@
 <?php
-use Caju\Validator\Date;
+use Cajudev\Validator\Date;
 use PHPUnit\Framework\TestCase;
 
 /**
