@@ -1,12 +1,13 @@
 {
+    "name": "cajudev/validator",
     "description": "Uma biblioteca que utiliza expressões regulares avançadas pré-construídas para facilitar a sua vida.",
     "keywords": ["validator", "composer", "php"],
     "license": "MIT",
     "type": "library",
     "authors": [
         {
-            "name": "cajudev/validator",
-            "email": "cajudev@gmail.com"
+            "name": "Richard Lopes",
+            "email": "contato.richardlopes@outlook.com"
         }
     ],
     "require": {
