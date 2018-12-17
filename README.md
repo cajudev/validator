@@ -1,16 +1,11 @@
-Composer Library Template
-=========================
+Bem vindo ao Validator
+======================
 
-If you are trying to create a new PHP Composer library, whether it will be going to submitted to packagist.org or just in your Github account, this template of files will surely help you make the process a lot easier and faster.
+Essa biblioteca fornece um conjunto de classes com expressões regulares de alto nível para validar os mais diferentes tipos de dados
 
-Features
---------
+Características
+---------------
 
-* PSR-4 autoloading compliant structure
-* Unit-Testing with PHPUnit
-* Comprehensive Guides and tutorial
-* Easy to use to any framework or even a plain php file
-
-
-I encourage that you put more information on this readme file instead of leaving it as is. See [How to make a README file](http://www.darwinbiler.com/designing-and-making-the-readme-file-for-your-github-repository/) for more info.
-"# validator" 
+* Padrão PSR-4
+* Boa cobertura de testes unitários com PHPUnit
+* Documentação clara e objetiva
