@@ -23,7 +23,7 @@
         "psr-4": {
             "Cajudev\\Validator\\": [
                 "src/",
-                "tests"
+                "tests/"
             ]
         }
     }
