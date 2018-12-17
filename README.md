@@ -1,7 +1,7 @@
 Bem vindo ao Validator
 ======================
 
-Essa biblioteca fornece um conjunto de classes com expressões regulares de alto nível para validar os mais diferentes tipos de dados
+Uma biblioteca que utiliza expressões regulares avançadas pré-construídas para facilitar a sua vida.
 
 Características
 ---------------
