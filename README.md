@@ -15,10 +15,24 @@ Validação de Datas
 ------------------
 
   ```php
+  validate (string $subject, string $format)
+  ```
+  
+Retorna um objeto Date contendo as informações referentes à data recebida. Retorna false se a data for inválida.
+  
+| Caractere | Descrição | intervalo |
+|-----------|-----------|-----------|
+| d         | dia       | 01-31     |
+| D         | dia       | 1-31      |
+| m         | mês       | 01-12     |
+| M         | mês       | 1-12      |
+| y         | ano       | 00-99     |
+| Y         | ano       | 1900-2099 |
+
+  ```php
   use Cajudev\Validator\Date;
   
-  $string = '2018-12-19';
-  if($date = Date::validate($string, 'Y-m-d')) {
+  if($date = Date::validate('2018-12-19', 'Y-m-d')) {
       $date->getDate();        //retornará 2018-12-19
       $date->getDay();         //retornará 19
       $date->getMonth();       //retornará 12
@@ -26,3 +40,4 @@ Validação de Datas
   }else {
       ...
   }
+  ```
