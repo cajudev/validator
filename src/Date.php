@@ -66,8 +66,6 @@ class Date {
         $regex .= "\\" . $pattern[3];
         $regex .= self::REGEX[$pattern[4]];
         $regex .= '$/';
-        echo $regex;
-        exit;
         return $regex;
     }
 
