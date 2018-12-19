@@ -18,9 +18,17 @@ class Date {
         "Y" => "(?<year>19[0-9]{2}|20[0-9]{2})"
     );
 
+    private $date;
     private $day;
     private $month;
     private $year;
+
+    public function __construct($params = array()){
+        $this->date  = $params[0]       ?? null;
+        $this->day   = $params['day']   ?? null;
+        $this->month = $params['month'] ?? null;
+        $this->year  = $params['year']  ?? null;
+    }
 
     /**
      * validate - Realiza a validação de uma data
@@ -31,31 +39,30 @@ class Date {
      * @return boolean
      */
     
-    public function validate($date, $string) {
-        $regex = $this->getRegex($string);
+    public static function validate($date, $pattern) {
+        $regex = self::getRegex($pattern);
         if(preg_match($regex, $date, $match)) {
             if(checkdate($match['month'], $match['day'], $match['year'])) {
-                $this->make($match);
-                return true;
+                return new Date($match);
             }
         }
         return false;
     }
 
-    private  function make($params) {
-        $this->date  = $params[0]       ?? null;
-        $this->day   = $params['day']   ?? null;
-        $this->month = $params['month'] ?? null;
-        $this->year  = $params['year']  ?? null;
+    public static function validateArray($array, $pattern) {
+        foreach($array as $element) {
+            $ret[] = self::validate($element, $pattern);
+        }
+        return $ret;
     }
 
-    private function getRegex($string) {
+    private static function getRegex($pattern) {
         $regex  = '/^';
-        $regex .= self::REGEX[$string[0]];
-        $regex .= "\\" . $string[1];
-        $regex .= self::REGEX[$string[2]];
-        $regex .= "\\" . $string[3];
-        $regex .= self::REGEX[$string[4]];
+        $regex .= self::REGEX[$pattern[0]];
+        $regex .= "\\" . $pattern[1];
+        $regex .= self::REGEX[$pattern[2]];
+        $regex .= "\\" . $pattern[3];
+        $regex .= self::REGEX[$pattern[4]];
         $regex .= '$/';
         return $regex;
     }
