@@ -12,8 +12,10 @@
 class Date {
 
     const REGEX = array(
-        "d" => "(?<day>[0-2][1-9]|[1-3][0-1])",
-        "m" => "(?<month>0[1-9]|1[0-2])",
+        "d" => "(?<day>[3][0-1]|[1-2][0-9]|0[1-9])",
+        "D" => "(?<day>[3][0-1]|[1-2][0-9]|[1-9])",
+        "m" => "(?<month>1[0-2]|0[1-9])",
+        "M" => "(?<month>1[0-2]|[1-9])",
         "y" => "(?<year>[0-9]{2})",
         "Y" => "(?<year>19[0-9]{2}|20[0-9]{2})"
     );
@@ -23,7 +25,7 @@ class Date {
     private $month;
     private $year;
 
-    public function __construct($params = array()){
+    private function __construct($params = array()){
         $this->date  = $params[0]       ?? null;
         $this->day   = $params['day']   ?? null;
         $this->month = $params['month'] ?? null;
@@ -64,6 +66,8 @@ class Date {
         $regex .= "\\" . $pattern[3];
         $regex .= self::REGEX[$pattern[4]];
         $regex .= '$/';
+        echo $regex;
+        exit;
         return $regex;
     }
 
