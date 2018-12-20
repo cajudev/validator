@@ -42,7 +42,53 @@ Retorna um objeto Date contendo as informações referentes à data recebida. Re
       $date->getDay();         // 19
       $date->getMonth();       // 12
       $date->getYear();        // 2018
+      $date->getTimestamp()    // 1545177600
+      
   }else {
       ...
   }
+  ```
+  
+  
+  ```php
+  validateArray (array $subjects, string $format)
+  ```
+  Retorna um array de objetos Date contendo as informações referentes à cada data recebida. Retorna um array vazio caso nenhuma ocorrência seja válida.
+  
+  ```php
+  use Cajudev\Validator\Date;
+  
+  $array = $array('2018-12-19', '12/05/2018', '14-02-18', '2018/01/05', '1995-02-18', '20.08.2000');
+  
+  if($date = Date::validateArray($array, 'Y-m-d')) {
+      print_r($array);
+  }else {
+      ...
+  }
+  
+  /** Saída ******************************************************************* 
+  
+    Array
+  (
+      [0] => Cajudev\Validator\Date Object
+          (
+              [date:Cajudev\Validator\Date:private] => 2018-12-19
+              [day:Cajudev\Validator\Date:private] => 19
+              [month:Cajudev\Validator\Date:private] => 12
+              [year:Cajudev\Validator\Date:private] => 2018
+              [timestamp:Cajudev\Validator\Date:private] => 1545177600
+          )
+
+      [1] => Cajudev\Validator\Date Object
+          (
+              [date:Cajudev\Validator\Date:private] => 1995-02-18
+              [day:Cajudev\Validator\Date:private] => 18
+              [month:Cajudev\Validator\Date:private] => 02
+              [year:Cajudev\Validator\Date:private] => 1995
+              [timestamp:Cajudev\Validator\Date:private] => 793065600
+          )
+
+  ) 
+  
+  /****************************************************************************
   ```
