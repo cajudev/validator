@@ -24,12 +24,23 @@ class DateTest extends TestCase {
 		self::assertInstanceOf(Date::class, Date::validate($this->date, 'd/m/Y'));
 	}
 
+	public function test_getInfo(){
+		$date = Date::validate('01/02/2018', 'd/m/Y');
+		self::assertEquals("01/02/2018", $date->getDate());
+		self::assertEquals("2018-02-01", $date->getDate('Y-m-d'));
+		self::assertEquals("02.2018.01", $date->getDate('m.Y.d'));
+		self::assertEquals("02-01-18",   $date->getDate('m-d-y'));
+		self::assertEquals("01",         $date->getDay());
+		self::assertEquals("02",         $date->getMonth());
+		self::assertEquals("2018",       $date->getYear());
+	}
+
 	public function test_validateArray(){
 		$array = Date::validateArray($this->arrayDate, 'd-m-Y');
 		self::assertInstanceOf(Date::class,$array[0]);
+		self::assertInstanceOf(Date::class,$array[4]);
 		self::assertFalse($array[1]);
 		self::assertFalse($array[2]);
 		self::assertFalse($array[3]);
-		self::assertInstanceOf(Date::class,$array[4]);
 	}
 }
