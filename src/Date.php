@@ -2,8 +2,6 @@
 
 /**
  *
- * Date Class
- *
  * Realiza a validação de datas num intervalo entre 1900 - 2099
  * 
  *  @author Richard Lopes
@@ -33,16 +31,15 @@ class Date {
         $this->year      = $params['year'];
         $this->timestamp = strtotime($this->year . '-' . $this->month . '-' . $this->day);
     }
-
-    /**
-     * validate - Realiza a validação de uma data
-     *
-     * @param  mixed $date - A string contendo a data a ser validada
-     * @param  mixed $string - A string contendo o formato a ser analisado
-     *
-     * @return boolean
-     */
     
+    /**
+     * validate
+     *
+     * @param  mixed $date
+     * @param  mixed $pattern
+     *
+     */
+
     public static function validate($date, $pattern) {
         self::validatePattern($pattern);
 
@@ -54,6 +51,15 @@ class Date {
         }
         return false;
     }
+    
+
+    /**
+     * validateArray
+     *
+     * @param  mixed $array
+     * @param  mixed $pattern
+     *
+     */
 
     public static function validateArray($array, $pattern) {
         foreach($array as $element) {
