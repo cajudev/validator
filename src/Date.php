@@ -13,23 +13,25 @@ class Date {
 
     const REGEX = array(
         "d" => "(?<day>[3][0-1]|[1-2][0-9]|0[1-9])",
-        "D" => "(?<day>[3][0-1]|[1-2][0-9]|[1-9])",
+        "j" => "(?<day>[3][0-1]|[1-2][0-9]|[1-9])",
         "m" => "(?<month>1[0-2]|0[1-9])",
-        "M" => "(?<month>1[0-2]|[1-9])",
+        "n" => "(?<month>1[0-2]|[1-9])",
         "y" => "(?<year>[0-9]{2})",
-        "Y" => "(?<year>19[0-9]{2}|20[0-9]{2})"
+        "Y" => "(?<year>19[7-9][0-9]|20[0-9]{2})"
     );
 
     private $date;
     private $day;
     private $month;
     private $year;
+    private $timestamp;
 
-    private function __construct($params = array()){
-        $this->date  = $params[0]       ?? null;
-        $this->day   = $params['day']   ?? null;
-        $this->month = $params['month'] ?? null;
-        $this->year  = $params['year']  ?? null;
+    private function __construct($params = array()) {
+        $this->date      = $params[0];
+        $this->day       = $params['day'];
+        $this->month     = $params['month'];
+        $this->year      = $params['year'];
+        $this->timestamp = strtotime($this->year . '-' . $this->month . '-' . $this->day);
     }
 
     /**
@@ -42,6 +44,8 @@ class Date {
      */
     
     public static function validate($date, $pattern) {
+        self::validatePattern($pattern);
+
         $regex = self::getRegex($pattern);
         if(preg_match($regex, $date, $match)) {
             if(checkdate($match['month'], $match['day'], $match['year'])) {
@@ -56,6 +60,12 @@ class Date {
             $ret[] = self::validate($element, $pattern);
         }
         return $ret;
+    }
+
+    private static function validatePattern($pattern) {
+        if(!preg_match("/^[djmny][.\/-][djmny][.\/-][djmny]$/i", $pattern)){
+            throw new \Exception("Illegal pattern input");
+        }
     }
 
     private static function getRegex($pattern) {
@@ -76,7 +86,7 @@ class Date {
      */
     
     public function getDay() {
-        return $this->day ?? null;
+        return $this->day;
     }
 
     /**
@@ -86,7 +96,7 @@ class Date {
      */
     
     public function getMonth() {
-        return $this->month ?? null;
+        return $this->month;
     }
 
     /**
@@ -96,7 +106,7 @@ class Date {
      */
     
     public function getYear() {
-        return $this->year ?? null;
+        return $this->year;
     }
 
     /**
@@ -105,7 +115,12 @@ class Date {
      * @return string
      */
 
-    public function getDate() {
-        return $this->date ?? null;
+    public function getDate($pattern = '') {
+        if($pattern == ''){
+            return $this->date;
+        }else{
+            self::validatePattern($pattern);
+            return date($pattern, $this->timestamp);
+        }
     }
 }
