@@ -3,7 +3,7 @@ Bem vindo ao Validator
 
 Não perca tempo pesquisando como validar informações como datas, documentos ou cartões de crédito.
 
-Essa biblioteca que possui um conjunto de validações prontas para uso.
+Essa biblioteca possui um conjunto de validações prontas para uso.
 
 Características
 ---------------
