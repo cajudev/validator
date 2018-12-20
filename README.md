@@ -1,7 +1,8 @@
 Bem vindo ao Validator
 ======================
 
-Não perca tempo pesquisando como validar cpf, cnpj, cartões de crédito, etc.
+Não perca tempo pesquisando como validar informações como datas, documentos ou cartões de crédito.
+
 Essa biblioteca que possui um conjunto de validações prontas para uso.
 
 Características
