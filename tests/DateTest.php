@@ -20,6 +20,8 @@ class DateTest extends TestCase {
 	}
 	
 	public function test_validate() {
+		echo ((Date::validate("2018-12-19", "Y-m-d"))->getTimestamp());
+		exit;
 		self::assertFalse(Date::validate($this->date, 'd-m-y'));
 		self::assertInstanceOf(Date::class, Date::validate($this->date, 'd/m/Y'));
 	}
@@ -33,14 +35,11 @@ class DateTest extends TestCase {
 		self::assertEquals("01",         $date->getDay());
 		self::assertEquals("02",         $date->getMonth());
 		self::assertEquals("2018",       $date->getYear());
+		self::assertEquals("1517443200", $date->getTimestamp());
 	}
 
 	public function test_validateArray(){
 		$array = Date::validateArray($this->arrayDate, 'd-m-Y');
-		self::assertInstanceOf(Date::class,$array[0]);
-		self::assertInstanceOf(Date::class,$array[4]);
-		self::assertFalse($array[1]);
-		self::assertFalse($array[2]);
-		self::assertFalse($array[3]);
+		self::assertEquals(2, count($array));
 	}
 }

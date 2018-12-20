@@ -62,8 +62,11 @@ class Date {
      */
 
     public static function validateArray($array, $pattern) {
+        $ret = array();
         foreach($array as $element) {
-            $ret[] = self::validate($element, $pattern);
+            if($date = self::validate($element, $pattern)){
+                $ret[] = $date;
+            }
         }
         return $ret;
     }
@@ -117,6 +120,8 @@ class Date {
 
     /**
      * getDate
+     * 
+     * @param $pattern
      *
      * @return string
      */
@@ -128,5 +133,15 @@ class Date {
             self::validatePattern($pattern);
             return date($pattern, $this->timestamp);
         }
+    }
+
+    /**
+     * getTimestamp
+     *
+     * @return string
+     */
+
+    public function getTimestamp(){
+        return $this->timestamp;
     }
 }
