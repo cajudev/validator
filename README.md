@@ -60,8 +60,8 @@ Retorna um objeto Date contendo as informações referentes à data recebida. Re
   
   $array = $array('2018-12-19', '12/05/2018', '14-02-18', '2018/01/05', '1995-02-18', '20.08.2000');
   
-  if($date = Date::validateArray($array, 'Y-m-d')) {
-      print_r($array);
+  if($dates = Date::validateArray($array, 'Y-m-d')) {
+      print_r($dates);
   }else {
       ...
   }
