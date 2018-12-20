@@ -62,7 +62,7 @@ class Date {
         return $ret;
     }
 
-    public static function validatePattern($pattern) {
+    private static function validatePattern($pattern) {
         if(!preg_match("/^[djmny][.\/-][djmny][.\/-][djmny]$/i", $pattern)){
             throw new \Exception("Illegal pattern input");
         }
