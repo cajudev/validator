@@ -58,7 +58,7 @@ Retorna um objeto Date contendo as informações referentes à data recebida. Re
   ```php
   use Cajudev\Validator\Date;
   
-  $array = $array('2018-12-19', '12/05/2018', '14-02-18', '2018/01/05', '1995-02-18', '20.08.2000');
+  $array = array('2018-12-19', '12/05/2018', '14-02-18', '2018/01/05', '1995-02-18', '20.08.2000');
   
   if($dates = Date::validateArray($array, 'Y-m-d')) {
       print_r($dates);
