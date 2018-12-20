@@ -66,7 +66,7 @@ Retorna um objeto Date contendo as informações referentes à data recebida. Re
       ...
   }
   
-  /** Saída ******************************************************************* 
+  /** Saída **/
   
     Array
   (
@@ -89,6 +89,4 @@ Retorna um objeto Date contendo as informações referentes à data recebida. Re
           )
 
   ) 
-  
-  /****************************************************************************
   ```
