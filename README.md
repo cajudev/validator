@@ -53,7 +53,7 @@ Retorna um objeto Date contendo as informações referentes à data recebida. Re
   ```php
   validateArray (array $subjects, string $format)
   ```
-  Retorna um array de objetos Date contendo as informações referentes à cada data recebida. Retorna um array vazio caso nenhuma ocorrência seja válida.
+  Retorna um array de objetos Date contendo as informações referentes à cada data válida recebida. Retorna um array vazio caso nenhuma ocorrência seja válida.
   
   ```php
   use Cajudev\Validator\Date;
