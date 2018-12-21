@@ -29,7 +29,7 @@ class Cpf {
         self::clean($number);
 
         if(preg_match(self::REGEX, $number)) {
-            if(self::getFirstDigit($number) == $number[9] && self::getSecondDigit($number) == $number[10]){
+            if(self::getDigit(1, $number) == $number[9] && self::getDigit(2, $number) == $number[10]){
                 return new Cpf($number);
             }
         }
@@ -55,20 +55,10 @@ class Cpf {
         return $ret;
     }
     
-    private static function getFirstDigit($num) {
+    private static function getDigit($k, $num) {
         $sum = 0;
 
-        for($i = 0, $j = 10; $i < 9; $i++, $j--) {
-            $sum += $num[$i] * $j;
-        }
-
-        return ($sum % 11 < 2) ? 0 : (11 - $sum % 11);
-    }
-
-    private static function getSecondDigit($num) {
-        $sum = 0;
-
-        for($i = 0, $j = 11; $i < 10; $i++, $j--) {
+        for($i = 0, $j = 9 + $k; $i < 8 + $k; $i++, $j--) {
             $sum += $num[$i] * $j;
         }
 
