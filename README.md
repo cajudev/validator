@@ -90,3 +90,65 @@ Retorna um objeto Date contendo as informações referentes à data recebida. Re
 
   ) 
   ```
+  
+Validação de CPF
+----------------
+
+  ```php
+  validate (string $subject)
+  ```
+  
+Retorna um objeto Cpf contendo um número válido. Retorna false se o cpf for inválido.
+
+  ```php
+  use Cajudev\Validator\Cpf;
+  
+  if($cpf = Cpf::validate("590.887.600-39")) {
+  
+      // por padrão, getNumber() retorna o número formatado, caso queira o número limpo, insira como argumento "false";
+      
+      $cpf->getNumber();        // 590.887.600-39
+      $cpf->getNumber(false);   // 59088760039
+      
+  }else {
+      ...
+  }
+  ```
+  
+  ```php
+  validateArray (array $subjects)
+  ```
+  Retorna um array de objetos com os cpf's válidos. Retorna um array vazio caso nenhuma ocorrência seja válida.
+  
+  ```php
+  use Cajudev\Validator\Cpf;
+  
+  $array = array("438.784.570-81", "231.803.290-41", "477.107.930-69", "041.830.100-04", "769.611.670-55");
+  
+  if($cpfs = Cpf::validateArray($array)) {
+      print_r($cpfs);
+  }else {
+      ...
+  }
+  
+  /** Saída **/
+  
+  Array
+  (
+      [0] => Cajudev\Validator\Cpf Object
+          (
+              [number:Cajudev\Validator\Cpf:private] => 43878457081
+          )
+
+      [1] => Cajudev\Validator\Cpf Object
+          (
+              [number:Cajudev\Validator\Cpf:private] => 23180329041
+          )
+
+      [2] => Cajudev\Validator\Cpf Object
+          (
+              [number:Cajudev\Validator\Cpf:private] => 04183010004
+          )
+
+  )
+  ```
