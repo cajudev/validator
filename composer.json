@@ -1,6 +1,6 @@
 {
     "name": "cajudev/validator",
-    "description": "Uma biblioteca que utiliza expressões regulares avançadas pré-construídas para facilitar a sua vida.",
+    "description": "Uma biblioteca que disponibiliza um conjunto de validações para facilitar a sua vida.",
     "keywords": ["validator", "composer", "php"],
     "license": "MIT",
     "homepage": "https://github.com/cajudev/validator",
