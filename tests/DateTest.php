@@ -20,8 +20,6 @@ class DateTest extends TestCase {
 	}
 	
 	public function test_validate() {
-		echo ((Date::validate("2018-12-19", "Y-m-d"))->getTimestamp());
-		exit;
 		self::assertFalse(Date::validate($this->date, 'd-m-y'));
 		self::assertInstanceOf(Date::class, Date::validate($this->date, 'd/m/Y'));
 	}
