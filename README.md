@@ -1,3 +1,4 @@
+
 Bem vindo ao Validator
 ======================
 
@@ -11,6 +12,12 @@ Características
 * Padrão PSR-4
 * Testes unitários com PHPUnit
 * Documentação clara e objetiva
+
+Sumário
+-------
+
+1. [Data](#validação-de-datas)
+2. [CPF](#validação-de-cpf)
 
 Validação de Datas
 ------------------
