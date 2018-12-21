@@ -13,7 +13,6 @@ Características
 
 * Padrão PSR-4
 * Testes unitários com PHPUnit
-* Documentação clara e objetiva
 
 Sumário
 -------
