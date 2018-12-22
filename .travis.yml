@@ -7,7 +7,7 @@ before_script:
     - composer install
 
 script:
-    - mkdir -p storage/coverage
+    - mkdir -p build/logs
     - ./vendor/bin/phpunit --configuration phpunit.xml
 
 after_success:
