@@ -1,6 +1,16 @@
-
 Bem vindo ao Validator
 ======================
+
+![](https://img.shields.io/packagist/v/cajudev/validator.svg)
+![](https://img.shields.io/github/license/cajudev/validator.svg)
+![](https://coveralls.io/repos/github/cajudev/validator/badge.svg?branch=master)
+![](https://img.shields.io/github/issues/cajudev/validator.svg)
+![](https://img.shields.io/github/contributors/cajudev/validator.svg)
+![](https://img.shields.io/github/downloads/cajudev/validator/total.svg)
+
+![](https://img.shields.io/github/stars/cajudev/validator.svg?label=Stars&style=social)
+![](https://img.shields.io/github/forks/cajudev/validator.svg?label=Fork&style=social)
+![](https://img.shields.io/github/followers/cajudev.svg?label=Follow&style=social)
 
 Não perca tempo pesquisando como validar informações como datas, documentos ou cartões de crédito.
 
