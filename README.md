@@ -19,6 +19,8 @@ Sumário
 
 1. [Data](#validação-de-datas)
 2. [CPF](#validação-de-cpf)
+3. [CNPJ](#validação-de-cnpj)
+4. [RG](#validação-de-rg)
 
 Validação de Datas
 ------------------
@@ -156,6 +158,146 @@ Retorna um objeto Cpf contendo um número válido. Retorna false se o cpf for in
       [2] => Cajudev\Validator\Cpf Object
           (
               [number:Cajudev\Validator\Cpf:private] => 04183010004
+          )
+
+  )
+  ```
+  
+Validação de CNPJ
+-----------------
+
+  ```php
+  validate (string $subject)
+  ```
+  
+Retorna um objeto Cnpj contendo um número válido. Retorna false se o cnpj for inválido.
+
+  ```php
+  use Cajudev\Validator\Cnpj;
+  
+  if($cnpj = Cnpj::validate("60.342.988/0001-07")) {
+  
+      // por padrão, getNumber() retorna o número formatado, caso queira o número limpo, insira como argumento "false";
+      
+      $cnpj->getNumber();        // 60.342.988/0001-07
+      $cnpj->getNumber(false);   // 60342988000107
+      
+  }else {
+      ...
+  }
+  ```
+  
+  ```php
+  validateArray (array $subjects)
+  ```
+  Retorna um array de objetos com os cnpj's válidos. Retorna um array vazio caso nenhuma ocorrência seja válida.
+  
+  ```php
+  use Cajudev\Validator\Cnpj;
+  
+  $array = array(
+    "58.929.896/0001-78",
+    "57.806.461/0001-74",
+    "09.475.795/0001-69",
+    "60.184.969/0001-81",
+    "87.048.150/0001-53"
+  );
+  
+  if($cnpjs = Cnpj::validateArray($array)) {
+      print_r($cnpjs);
+  }else {
+      ...
+  }
+  
+  /** Saída **/
+  
+  Array
+  (
+      [0] => Cajudev\Validator\Cnpj Object
+          (
+              [number:Cajudev\Validator\Cnpj:private] => 58929896000178
+          )
+
+      [1] => Cajudev\Validator\Cnpj Object
+          (
+              [number:Cajudev\Validator\Cnpj:private] => 09475795000169
+          )
+
+      [2] => Cajudev\Validator\Cnpj Object
+          (
+              [number:Cajudev\Validator\Cnpj:private] => 87048150000153
+          )
+
+  )
+  ```
+
+Validação de RG
+---------------
+
+Importante destacar que no Brasil não existe uma formalização nacional do RG, essa validação apenas verifica matematicamente se o dígito verificador 'bate' com o número inserido.
+
+Atualmente suporta Rg's terminados em 'x'.
+
+  ```php
+  validate (string $subject)
+  ```
+
+Retorna um objeto Rg contendo um número válido. Retorna false se o rg for inválido.
+
+  ```php
+  use Cajudev\Validator\Rg;
+  
+  if($rg = Rg::validate("43.230.115-X")) {
+  
+      // por padrão, getNumber() retorna o número formatado, caso queira o número limpo, insira como argumento "false";
+      
+      $rg->getNumber();        // 43.230.115-X
+      $rg->getNumber(false);   // 43230115X
+      
+  }else {
+      ...
+  }
+  ```
+  
+  ```php
+  validateArray (array $subjects)
+  ```
+  Retorna um array de objetos com os rg's válidos. Retorna um array vazio caso nenhuma ocorrência seja válida.
+  
+  ```php
+  use Cajudev\Validator\Rg;
+  
+  $array = array(
+    "58.929.896/0001-78",
+    "57.806.461/0001-74",
+    "09.475.795/0001-69",
+    "60.184.969/0001-81",
+    "87.048.150/0001-53"
+  );
+  
+  if($rgs = Rg::validateArray($array)) {
+      print_r($rgs);
+  }else {
+      ...
+  }
+  
+  /** Saída **/
+  
+  Array
+  (
+      [0] => Cajudev\Validator\Rg Object
+          (
+              [number:Cajudev\Validator\Rg:private] => 323316207
+          )
+
+      [1] => Cajudev\Validator\Rg Object
+          (
+              [number:Cajudev\Validator\Rg:private] => 435131126
+          )
+
+      [2] => Cajudev\Validator\Rg Object
+          (
+              [number:Cajudev\Validator\Rg:private] => 261783841
           )
 
   )
