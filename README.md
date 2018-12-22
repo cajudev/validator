@@ -2,12 +2,12 @@ Bem vindo ao Validator
 ======================
 
 ![](https://img.shields.io/packagist/v/cajudev/validator.svg)
+![](https://img.shields.io/packagist/dt/cajudev/validator.svg)
 ![](https://img.shields.io/github/license/cajudev/validator.svg)
 ![](https://img.shields.io/travis/cajudev/validator.svg)
 ![](https://coveralls.io/repos/github/cajudev/validator/badge.svg?branch=master)
 ![](https://img.shields.io/github/issues/cajudev/validator.svg)
 ![](https://img.shields.io/github/contributors/cajudev/validator.svg)
-![](https://img.shields.io/github/downloads/cajudev/validator/total.svg)
 
 ![](https://img.shields.io/github/stars/cajudev/validator.svg?label=Stars&style=social)
 ![](https://img.shields.io/github/forks/cajudev/validator.svg?label=Fork&style=social)
