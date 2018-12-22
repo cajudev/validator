@@ -3,6 +3,7 @@ Bem vindo ao Validator
 
 ![](https://img.shields.io/packagist/v/cajudev/validator.svg)
 ![](https://img.shields.io/github/license/cajudev/validator.svg)
+![](https://img.shields.io/travis/cajudev/validator.svg)
 ![](https://coveralls.io/repos/github/cajudev/validator/badge.svg?branch=master)
 ![](https://img.shields.io/github/issues/cajudev/validator.svg)
 ![](https://img.shields.io/github/contributors/cajudev/validator.svg)
