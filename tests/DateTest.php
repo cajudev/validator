@@ -40,4 +40,9 @@ class DateTest extends TestCase {
 		$array = Date::validateArray($this->arrayDate, 'd-m-Y');
 		self::assertEquals(2, count($array));
 	}
+
+	public function test_validatePattern(){
+		self::expectException(\Exception::class);
+		$array = Date::validateArray($this->arrayDate, 'dmY');		
+	}
 }
