@@ -277,11 +277,11 @@ Retorna um objeto Rg contendo um número válido. Retorna false se o rg for inv�
   
   $array = array(
     "32.331.620-7",
-		"43.513.112-6",
-		"26.178.384-1",
-		"15.978.609-7",
-		"43.230.111-X",
-		"37.802.977-1",
+    "43.513.112-6",
+    "26.178.384-1",
+    "15.978.609-7",
+    "43.230.111-X",
+    "37.802.977-1",
   );
   
   if($rgs = Rg::validateArray($array)) {
