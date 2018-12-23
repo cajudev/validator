@@ -24,13 +24,14 @@ Características
 Sumário
 -------
 
-1. [Data](#validação-de-datas)
+1. [Data](#validação-de-data)
 2. [CPF](#validação-de-cpf)
 3. [CNPJ](#validação-de-cnpj)
 4. [RG](#validação-de-rg)
+4. [Cartão de Crédito](#validação-de-cartão-de-crédito)
 
-Validação de Datas
-------------------
+Validação de Data
+-----------------
 
   ```php
   validate (string $subject, string $format)
@@ -305,6 +306,81 @@ Retorna um objeto Rg contendo um número válido. Retorna false se o rg for inv�
       [2] => Cajudev\Validator\Rg Object
           (
               [number:Cajudev\Validator\Rg:private] => 261783841
+          )
+
+  )
+  ```
+
+Validação de Cartão de Crédito
+------------------------------
+
+Realizamos a validação utilizando o algoritmo de Luhn e as tabelas de bin's disponibilizadas pelas operadoras
+
+  ```php
+  validate (string $subject)
+  ```
+
+Retorna um objeto CreditCard contendo o número e a bandeira do cartão. Retorna false se o número for inválido.
+
+  ```php
+  use Cajudev\Validator\CreditCard;
+  
+  if($cc = CreditCard::validate("5277887630105547")) {
+  
+      // por padrão, getNumber() retorna o número formatado, caso queira o número limpo, insira como argumento "false";
+      
+      $cc->getNumber();        // 5277 8876 3010 5547
+      $cc->getNumber(false);   // 5277887630105547
+      $cc->getFlag()           // mastercard
+      
+  }else {
+      ...
+  }
+  ```
+  
+  ```php
+  validateArray (array $subjects)
+  ```
+  Retorna um array de objetos com os cc's válidos. Retorna um array vazio caso nenhuma ocorrência seja válida.
+  
+  ```php
+  use Cajudev\Validator\CreditCard;
+  
+  $array = array(
+    "5307 9584 2290 0132",
+    "5307 9584 2290 0133",
+    "4532 6941 9414 4788",
+    "4532 6941 9414 4787",
+    "3775 247152 71460",
+    "3775 247152 71461"
+  );
+  
+  if($ccs = CreditCard::validateArray($array)) {
+      print_r($ccs);
+  }else {
+      ...
+  }
+  
+  /** Saída **/
+  
+  Array
+  (
+      [0] => Cajudev\Validator\CreditCard Object
+          (
+              [number:Cajudev\Validator\CreditCard:private] => 5307958422900132
+              [flag:Cajudev\Validator\CreditCard:private] => mastercard
+          )
+
+      [1] => Cajudev\Validator\CreditCard Object
+          (
+              [number:Cajudev\Validator\CreditCard:private] => 4532694194144787
+              [flag:Cajudev\Validator\CreditCard:private] => visa
+          )
+
+      [2] => Cajudev\Validator\CreditCard Object
+          (
+              [number:Cajudev\Validator\CreditCard:private] => 377524715271460
+              [flag:Cajudev\Validator\CreditCard:private] => amex
           )
 
   )
