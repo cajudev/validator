@@ -276,11 +276,12 @@ Retorna um objeto Rg contendo um número válido. Retorna false se o rg for inv�
   use Cajudev\Validator\Rg;
   
   $array = array(
-    "58.929.896/0001-78",
-    "57.806.461/0001-74",
-    "09.475.795/0001-69",
-    "60.184.969/0001-81",
-    "87.048.150/0001-53"
+    "32.331.620-7",
+    "43.513.112-6",
+    "26.178.384-1",
+    "15.978.609-7",
+    "43.230.111-X",
+    "37.802.977-1",
   );
   
   if($rgs = Rg::validateArray($array)) {
