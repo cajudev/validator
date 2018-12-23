@@ -1,5 +1,5 @@
 <?php
-use Cajudev\Validator\Rg;
+use Cajudev\Validator\Document\Rg;
 use PHPUnit\Framework\TestCase;
 
 /**
