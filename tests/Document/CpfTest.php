@@ -1,5 +1,5 @@
 <?php
-use Cajudev\Validator\Cpf;
+use Cajudev\Validator\Document\Cpf;
 use PHPUnit\Framework\TestCase;
 
 /**
