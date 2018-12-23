@@ -16,7 +16,7 @@ class CreditCardTest extends TestCase {
     }
 	
 	public function test_validate() {
-		self::assertFalse(CreditCard::validate("277 8876 3010 5547"));
+		self::assertFalse(CreditCard::validate("2615334"));
 		self::assertInstanceOf(CreditCard::class, CreditCard::validate("5277 8876 3010 5547"));
 	}
 
@@ -33,6 +33,10 @@ class CreditCardTest extends TestCase {
         $number = CreditCard::validate("372141991176589");
         self::assertEquals("3721 419911 76589", $number->getNumber());
         self::assertEquals("372141991176589", $number->getNumber(false));
+
+        $number = CreditCard::validate("30057669516662");
+        self::assertEquals("3005 766951 6662", $number->getNumber());
+        self::assertEquals("30057669516662", $number->getNumber(false));
     }
     
     public function test_getFlag() {

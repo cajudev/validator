@@ -20,6 +20,7 @@
 		</filter>
 
 			<logging>
+				<log type="coverage-html" target="build/logs"/>
 				<log type="coverage-clover" target="build/logs/clover.xml"/>
 			</logging>
 </phpunit>
