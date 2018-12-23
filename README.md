@@ -24,11 +24,17 @@ Características
 Sumário
 -------
 
-1. [Data](#validação-de-data)
-2. [CPF](#validação-de-cpf)
-3. [CNPJ](#validação-de-cnpj)
-4. [RG](#validação-de-rg)
-4. [Cartão de Crédito](#validação-de-cartão-de-crédito)
+1. [Contribuindo](#contribuindo)
+2. [Data](#validação-de-data)
+3. [CPF](#validação-de-cpf)
+4. [CNPJ](#validação-de-cnpj)
+5. [RG](#validação-de-rg)
+6. [Cartão de Crédito](#validação-de-cartão-de-crédito)
+
+Contribuindo
+------------
+
+Faça um fork deste projeto e envie seus pull requests para averiguação. É necessário que todos os métodos sejam testados e passem pela análise do travis. Por último, sigam o padrão factory method (basta observar a construção das outras classes).
 
 Validação de Data
 -----------------
@@ -276,11 +282,12 @@ Retorna um objeto Rg contendo um número válido. Retorna false se o rg for inv�
   use Cajudev\Validator\Rg;
   
   $array = array(
-    "58.929.896/0001-78",
-    "57.806.461/0001-74",
-    "09.475.795/0001-69",
-    "60.184.969/0001-81",
-    "87.048.150/0001-53"
+    "32.331.620-7",
+    "43.513.112-6",
+    "26.178.384-1",
+    "15.978.609-7",
+    "43.230.111-X",
+    "37.802.977-1",
   );
   
   if($rgs = Rg::validateArray($array)) {
@@ -314,7 +321,9 @@ Retorna um objeto Rg contendo um número válido. Retorna false se o rg for inv�
 Validação de Cartão de Crédito
 ------------------------------
 
-Realizamos a validação utilizando o algoritmo de Luhn e as tabelas de bin's disponibilizadas pelas operadoras
+A validação é feita utilizando o algoritmo de Luhn e as tabelas de bin's disponibilizadas pelas operadoras
+
+Atualmente são reconhecidas as seguintes bandeiras: elo, visa, mastercard, amex e diners.
 
   ```php
   validate (string $subject)
