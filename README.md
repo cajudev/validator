@@ -34,7 +34,7 @@ Sumário
 Contribuindo
 ------------
 
-Faça um fork deste projeto e envie seus pull requests para averiguação. É necessário que todos os métodos sejam testados e passem pela análise do travis. Por último, sigam o padrão factory method (basta observar a contrução das outras classes).
+Faça um fork deste projeto e envie seus pull requests para averiguação. É necessário que todos os métodos sejam testados e passem pela análise do travis. Por último, sigam o padrão factory method (basta observar a construção das outras classes).
 
 Validação de Data
 -----------------
