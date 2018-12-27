@@ -125,7 +125,7 @@ Validação de CPF
 Retorna um objeto Cpf contendo um número válido. Retorna false se o cpf for inválido.
 
   ```php
-  use Cajudev\Validator\Cpf;
+  use Cajudev\Validator\Document\Cpf;
   
   if($cpf = Cpf::validate("590.887.600-39")) {
   
@@ -145,7 +145,7 @@ Retorna um objeto Cpf contendo um número válido. Retorna false se o cpf for in
   Retorna um array de objetos com os cpf's válidos. Retorna um array vazio caso nenhuma ocorrência seja válida.
   
   ```php
-  use Cajudev\Validator\Cpf;
+  use Cajudev\Validator\Document\Cpf;
   
   $array = array("438.784.570-81", "231.803.290-41", "477.107.930-69", "041.830.100-04", "769.611.670-55");
   
@@ -187,7 +187,7 @@ Validação de CNPJ
 Retorna um objeto Cnpj contendo um número válido. Retorna false se o cnpj for inválido.
 
   ```php
-  use Cajudev\Validator\Cnpj;
+  use Cajudev\Validator\Document\Cnpj;
   
   if($cnpj = Cnpj::validate("60.342.988/0001-07")) {
   
@@ -227,7 +227,7 @@ Retorna um objeto Cnpj contendo um número válido. Retorna false se o cnpj for 
   
   Array
   (
-      [0] => Cajudev\Validator\Cnpj Object
+      [0] => Cajudev\Validator\Document\Cnpj Object
           (
               [number:Cajudev\Validator\Cnpj:private] => 58929896000178
           )
@@ -259,7 +259,7 @@ Atualmente suporta Rg's terminados em 'x'.
 Retorna um objeto Rg contendo um número válido. Retorna false se o rg for inválido.
 
   ```php
-  use Cajudev\Validator\Rg;
+  use Cajudev\Validator\Document\Rg;
   
   if($rg = Rg::validate("43.230.115-X")) {
   
@@ -279,7 +279,7 @@ Retorna um objeto Rg contendo um número válido. Retorna false se o rg for inv�
   Retorna um array de objetos com os rg's válidos. Retorna um array vazio caso nenhuma ocorrência seja válida.
   
   ```php
-  use Cajudev\Validator\Rg;
+  use Cajudev\Validator\Document\Rg;
   
   $array = array(
     "32.331.620-7",
