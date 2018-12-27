@@ -2,7 +2,7 @@
 
 /**
  *
- * Realiza a validação de Documentos
+ * Validate brazilian documents
  * 
  *  @author Richard Lopes
  */

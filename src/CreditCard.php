@@ -5,7 +5,7 @@ use Cajudev\Validator\Utils\Cleaner;
 
 /**
  *
- * Realiza a validação de cartões de crédito
+ * Validate creditcard numbers
  * 
  *  @author Richard Lopes
  */

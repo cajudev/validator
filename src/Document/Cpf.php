@@ -7,7 +7,7 @@ use Cajudev\Validator\Utils\Cleaner;
 
 /**
  *
- * Realiza a validação de CPF's
+ * Validate brazilian cpf numbers
  * 
  *  @author Richard Lopes
  */

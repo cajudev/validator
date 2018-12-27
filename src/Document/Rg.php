@@ -7,7 +7,7 @@ use Cajudev\Validator\Utils\Cleaner;
 
 /**
  *
- * Realiza a validação de RG's
+ * Validate brazilian rg numbers
  * 
  *  @author Richard Lopes
  */

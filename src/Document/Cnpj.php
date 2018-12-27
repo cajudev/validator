@@ -7,7 +7,7 @@ use Cajudev\Validator\Utils\Cleaner;
 
 /**
  *
- * Realiza a validação de CNPJ's
+ *  Validate brazilian cnpj numbers
  * 
  *  @author Richard Lopes
  */
@@ -32,7 +32,6 @@ class Cnpj extends Document {
         Cleaner::cleanNumber($number);
 
         if(preg_match(self::REGEX, $number)) {
-
             if(self::getDigit(1, $number) == $number[12] && self::getDigit(2, $number) == $number[13]){
                 return new Cnpj($number);
             }
@@ -52,7 +51,7 @@ class Cnpj extends Document {
     public static function validateArray($array) {
         $ret = array();
         foreach($array as $element) {
-            if($number = self::validate($element)){
+            if($number = self::validate($element)) {
                 $ret[] = $number;
             }
         }
