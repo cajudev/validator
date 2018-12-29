@@ -9,14 +9,14 @@
 
 class Date {
 
-    const REGEX = array(
+    const REGEX = [
         "d" => "(?<day>[3][0-1]|[1-2][0-9]|0[1-9])",
         "j" => "(?<day>[3][0-1]|[1-2][0-9]|[1-9])",
         "m" => "(?<month>1[0-2]|0[1-9])",
         "n" => "(?<month>1[0-2]|[1-9])",
         "y" => "(?<year>[0-9]{2})",
         "Y" => "(?<year>19[7-9][0-9]|20[0-9]{2})",
-    );
+    ];
 
     private $date;
     private $day;
@@ -24,7 +24,7 @@ class Date {
     private $year;
     private $timestamp;
 
-    private function __construct($params = array()) {
+    private function __construct($params = []) {
         $this->date      = $params[0];
         $this->day       = $params['day'];
         $this->month     = $params['month'];
@@ -62,7 +62,7 @@ class Date {
      */
 
     public static function validateArray($array, $pattern) {
-        $ret = array();
+        $ret = [];
         foreach($array as $element) {
             if($date = self::validate($element, $pattern)) {
                 $ret[] = $date;
