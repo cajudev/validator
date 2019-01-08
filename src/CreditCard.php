@@ -5,20 +5,20 @@ use Cajudev\Validator\Utils\Cleaner;
 
 /**
  *
- * Realiza a validação de cartões de crédito
+ * Validate creditcard numbers
  * 
  *  @author Richard Lopes
  */
 
 class CreditCard {
 
-    private const REGEX = array(
+    private const REGEX = [
         'elo'        => '/^(((636368)|(636369)|(438935)|(504175)|(636297)|(506699))[0-9]{10})|(((5067)|(4514)|(4576)|(4011))[0-9]{12})$/',
         'visa'       => '/^4[0-9]{12}(?:[0-9]{3})?$/',
         'mastercard' => '/^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/',
         'amex'       => '/^3[47][0-9]{13}$/',
         'diners'     => '/^3(?:0[0-5]|[68][0-9])[0-9]{11}$/'
-    );
+    ];
 
     private $number;
     private $flag;
@@ -56,7 +56,7 @@ class CreditCard {
      */
 
     public static function validateArray($array) {
-        $ret = array();
+        $ret = [];
         foreach($array as $element) {
             if($number = self::validate($element)) {
                 $ret[] = $number;

@@ -7,7 +7,7 @@ use Cajudev\Validator\Utils\Cleaner;
 
 /**
  *
- * Realiza a validação de CPF's
+ * Validate brazilian cpf numbers
  * 
  *  @author Richard Lopes
  */
@@ -49,7 +49,7 @@ class Cpf extends Document {
      */
 
     public static function validateArray($array) {
-        $ret = array();
+        $ret = [];
         foreach($array as $element) {
             if($number = self::validate($element)){
                 $ret[] = $number;

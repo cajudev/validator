@@ -9,10 +9,7 @@ use PHPUnit\Framework\TestCase;
 class CreditCardTest extends TestCase {
 
     public function setUp() {
-        $file        = __DIR__."/files/creditcards.json";
-        $handler     = fopen($file, "r");
-        $reader      = fread($handler, filesize($file));
-        $this->cards = json_decode($reader, true);
+        $this->cards = json_decode(file_get_contents(__DIR__."/files/creditcards.json"), true);
     }
 	
 	public function test_validate() {

@@ -7,7 +7,7 @@ use Cajudev\Validator\Utils\Cleaner;
 
 /**
  *
- * Realiza a validação de RG's
+ * Validate brazilian rg numbers
  * 
  *  @author Richard Lopes
  */
@@ -50,7 +50,7 @@ class Rg extends Document {
      */
 
     public static function validateArray($array) {
-        $ret = array();
+        $ret = [];
         foreach($array as $element) {
             if($number = self::validate($element)) {
                 $ret[] = $number;
