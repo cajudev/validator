@@ -1,23 +1,23 @@
-<?php namespace Cajudev\Validator;
+<?php namespace Cajudev\Validator\Document;
+
+use Cajudev\Validator\Document\Document;
 
 use Cajudev\Validator\Utils\Masker;
 use Cajudev\Validator\Utils\Cleaner;
 
 /**
  *
- * Realiza a validação de CNPJ's
+ *  Validate brazilian cnpj numbers
  * 
  *  @author Richard Lopes
  */
 
-class Cnpj {
+class Cnpj extends Document {
 
     private const REGEX = '/^(?!(\d)\1{13})\d{14}$/';
 
-    private $number;
-
     private function __construct($number) {
-        $this->number = $number;
+        parent::__construct($number);
     }
     
     /**
@@ -32,7 +32,6 @@ class Cnpj {
         Cleaner::cleanNumber($number);
 
         if(preg_match(self::REGEX, $number)) {
-
             if(self::getDigit(1, $number) == $number[12] && self::getDigit(2, $number) == $number[13]){
                 return new Cnpj($number);
             }
@@ -50,7 +49,7 @@ class Cnpj {
      */
 
     public static function validateArray($array) {
-        $ret = array();
+        $ret = [];
         foreach($array as $element) {
             if($number = self::validate($element)) {
                 $ret[] = $number;
@@ -59,7 +58,7 @@ class Cnpj {
         return $ret;
     }
     
-    private static function getDigit($k, $num) {
+    protected static function getDigit($k, $num) {
         $sum = 0;
 
         for($i = 0, $j = 4 + $k; $i < 11 + $k; $i++, $j--) {

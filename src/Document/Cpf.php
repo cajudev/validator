@@ -1,23 +1,23 @@
-<?php namespace Cajudev\Validator;
+<?php namespace Cajudev\Validator\Document;
+
+use Cajudev\Validator\Document\Document;
 
 use Cajudev\Validator\Utils\Masker;
 use Cajudev\Validator\Utils\Cleaner;
 
 /**
  *
- * Realiza a validação de CPF's
+ * Validate brazilian cpf numbers
  * 
  *  @author Richard Lopes
  */
 
-class Cpf {
+class Cpf extends Document {
 
     private const REGEX = '/^(?!(\d)\1{10})\d{11}$/';
 
-    private $number;
-
     private function __construct($number){
-        $this->number = $number;
+        parent::__construct($number);
     }
     
     /**
@@ -49,7 +49,7 @@ class Cpf {
      */
 
     public static function validateArray($array) {
-        $ret = array();
+        $ret = [];
         foreach($array as $element) {
             if($number = self::validate($element)){
                 $ret[] = $number;
@@ -58,7 +58,7 @@ class Cpf {
         return $ret;
     }
     
-    private static function getDigit($k, $num) {
+    protected static function getDigit($k, $num) {
         $sum = 0;
 
         for($i = 0, $j = 9 + $k; $i < 8 + $k; $i++, $j--) {

@@ -2,21 +2,21 @@
 
 /**
  *
- * Realiza a validação de datas num intervalo entre 1900 - 2099
+ * Validate dates in a range between 1900 and 2099
  * 
  *  @author Richard Lopes
  */
 
 class Date {
 
-    const REGEX = array(
+    const REGEX = [
         "d" => "(?<day>[3][0-1]|[1-2][0-9]|0[1-9])",
         "j" => "(?<day>[3][0-1]|[1-2][0-9]|[1-9])",
         "m" => "(?<month>1[0-2]|0[1-9])",
         "n" => "(?<month>1[0-2]|[1-9])",
         "y" => "(?<year>[0-9]{2})",
-        "Y" => "(?<year>19[7-9][0-9]|20[0-9]{2})"
-    );
+        "Y" => "(?<year>19[7-9][0-9]|20[0-9]{2})",
+    ];
 
     private $date;
     private $day;
@@ -24,7 +24,7 @@ class Date {
     private $year;
     private $timestamp;
 
-    private function __construct($params = array()) {
+    private function __construct($params = []) {
         $this->date      = $params[0];
         $this->day       = $params['day'];
         $this->month     = $params['month'];
@@ -62,9 +62,9 @@ class Date {
      */
 
     public static function validateArray($array, $pattern) {
-        $ret = array();
+        $ret = [];
         foreach($array as $element) {
-            if($date = self::validate($element, $pattern)){
+            if($date = self::validate($element, $pattern)) {
                 $ret[] = $date;
             }
         }
@@ -72,7 +72,7 @@ class Date {
     }
 
     private static function validatePattern($pattern) {
-        if(!preg_match("/^[djmny][.\/-][djmny][.\/-][djmny]$/i", $pattern)){
+        if(!preg_match("/^[djmny][.\/-][djmny][.\/-][djmny]$/i", $pattern)) {
             throw new \Exception("Illegal pattern input");
         }
     }
@@ -127,9 +127,9 @@ class Date {
      */
 
     public function getDate($pattern = '') {
-        if($pattern == ''){
+        if($pattern == '') {
             return $this->date;
-        }else{
+        }else {
             self::validatePattern($pattern);
             return date($pattern, $this->timestamp);
         }
@@ -141,7 +141,7 @@ class Date {
      * @return string
      */
 
-    public function getTimestamp(){
+    public function getTimestamp() {
         return $this->timestamp;
     }
 }

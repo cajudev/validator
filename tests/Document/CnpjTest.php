@@ -1,5 +1,5 @@
 <?php
-use Cajudev\Validator\Cnpj;
+use Cajudev\Validator\Document\Cnpj;
 use PHPUnit\Framework\TestCase;
 
 /**
