@@ -13,7 +13,7 @@ Não perca tempo pesquisando como validar informações como datas, documentos o
 
 Essa biblioteca possui um conjunto de validações prontas para uso.
 
-Veja a documentação completa em: https://doc-validator.readthedocs.io
+Veja a documentação completa em: https://cajudev.readthedocs.io
 
 Características
 ---------------
