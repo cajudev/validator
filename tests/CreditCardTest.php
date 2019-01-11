@@ -23,9 +23,9 @@ class CreditCardTest extends TestCase {
     }
     
     public function test_getNumber() {
-		$number = CreditCard::validate("5067931513802129");
-        self::assertEquals("5067 9315 1380 2129", $number->getNumber());
-        self::assertEquals("5067931513802129", $number->getNumber(false));
+		$number = CreditCard::validate("6550145129309021");
+        self::assertEquals("6550 1451 2930 9021", $number->getNumber());
+        self::assertEquals("6550145129309021", $number->getNumber(false));
         
         $number = CreditCard::validate("372141991176589");
         self::assertEquals("3721 419911 76589", $number->getNumber());
