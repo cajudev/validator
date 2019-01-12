@@ -51,14 +51,14 @@ class CreditCard {
      * @return CreditCard
      */
 
-    public static function validate($number) {
+    public static function validate($number) : ?CreditCard {
         Cleaner::cleanNumber($number);
 
         if(self::checkLuhnAlgorithm($number) && $flag = self::findFlag($number)) {
             return new CreditCard($number, $flag);
         }
-        
-        return false;
+
+        return null;
     }
 
     /**
@@ -70,7 +70,7 @@ class CreditCard {
      * @return array
      */
 
-    public static function validateArray($array) {
+    public static function validateArray(array $array) : array {
         $ret = [];
         foreach($array as $element) {
             if($number = self::validate($element)) {

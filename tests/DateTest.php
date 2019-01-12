@@ -20,7 +20,7 @@ class DateTest extends TestCase {
 	}
 	
 	public function test_validate() {
-		self::assertFalse(Date::validate($this->date, 'd-m-y'));
+		self::assertNull(Date::validate($this->date, 'd-m-y'));
 		self::assertInstanceOf(Date::class, Date::validate($this->date, 'd/m/Y'));
 	}
 

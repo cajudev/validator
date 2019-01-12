@@ -28,7 +28,7 @@ class Rg extends Document {
      * @return Rg
      */
 
-    public static function validate($number) {
+    public static function validate($number) : ?Rg {
         Cleaner::cleanNumber($number, "xX");
         $number = strtoupper($number);
 
@@ -37,7 +37,8 @@ class Rg extends Document {
                 return new Rg($number);
             }
         }
-        return false;
+        
+        return null;
     }
 
     /**
@@ -49,7 +50,7 @@ class Rg extends Document {
      * @return array
      */
 
-    public static function validateArray($array) {
+    public static function validateArray(array $array) : array {
         $ret = [];
         foreach($array as $element) {
             if($number = self::validate($element)) {

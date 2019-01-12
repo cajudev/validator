@@ -40,7 +40,7 @@ class Date {
      *
      */
 
-    public static function validate($date, $pattern) {
+    public static function validate($date, $pattern) : ?Date {
         self::validatePattern($pattern);
 
         $regex = self::getRegex($pattern);
@@ -49,7 +49,8 @@ class Date {
                 return new Date($match);
             }
         }
-        return false;
+
+        return null;
     }
     
 
@@ -61,7 +62,7 @@ class Date {
      *
      */
 
-    public static function validateArray($array, $pattern) {
+    public static function validateArray(array $array, $pattern) : array {
         $ret = [];
         foreach($array as $element) {
             if($date = self::validate($element, $pattern)) {

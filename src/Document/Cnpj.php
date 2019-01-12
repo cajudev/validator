@@ -28,7 +28,7 @@ class Cnpj extends Document {
      * @return Cnpj
      */
 
-    public static function validate($number) {
+    public static function validate($number) : ?Cnpj {
         Cleaner::cleanNumber($number);
 
         if(preg_match(self::REGEX, $number)) {
@@ -36,7 +36,8 @@ class Cnpj extends Document {
                 return new Cnpj($number);
             }
         }
-        return false;
+
+        return null;
     }
 
     /**
@@ -48,7 +49,7 @@ class Cnpj extends Document {
      * @return array
      */
 
-    public static function validateArray($array) {
+    public static function validateArray(array $array) : array {
         $ret = [];
         foreach($array as $element) {
             if($number = self::validate($element)) {

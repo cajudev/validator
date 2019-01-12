@@ -18,7 +18,7 @@ class CnpjTest extends TestCase {
 	}
 	
 	public function test_validate() {
-		self::assertFalse(Cnpj::validate("72.143.232/0001-01"));
+		self::assertNull(Cnpj::validate("72.143.232/0001-01"));
 		self::assertInstanceOf(Cnpj::class, Cnpj::validate("72.143.232/0001-00"));
 	}
 
