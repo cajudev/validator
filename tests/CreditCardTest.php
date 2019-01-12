@@ -13,7 +13,7 @@ class CreditCardTest extends TestCase {
     }
 	
 	public function test_validate() {
-		self::assertFalse(CreditCard::validate("2615334"));
+		self::assertNull(CreditCard::validate("2615334"));
 		self::assertInstanceOf(CreditCard::class, CreditCard::validate("5277 8876 3010 5547"));
 	}
 

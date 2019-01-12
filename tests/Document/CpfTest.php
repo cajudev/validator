@@ -18,7 +18,7 @@ class CpfTest extends TestCase {
 	}
 	
 	public function test_validate() {
-		self::assertFalse(Cpf::validate("590.887.600-40"));
+		self::assertNull(Cpf::validate("590.887.600-40"));
 		self::assertInstanceOf(Cpf::class, Cpf::validate("590.887.600-39"));
 	}
 

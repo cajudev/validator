@@ -17,7 +17,7 @@ abstract class Document {
 
     protected abstract static function validate($number);
 
-    protected abstract static function validateArray($array);
+    protected abstract static function validateArray(array $array) : array;
     
     protected abstract static function getDigit($k, $num);
 

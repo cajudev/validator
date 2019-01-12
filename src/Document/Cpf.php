@@ -28,7 +28,7 @@ class Cpf extends Document {
      * @return Cpf
      */
 
-    public static function validate($number) {
+    public static function validate($number) : ?Cpf {
         Cleaner::cleanNumber($number);
 
         if(preg_match(self::REGEX, $number)) {
@@ -36,7 +36,8 @@ class Cpf extends Document {
                 return new Cpf($number);
             }
         }
-        return false;
+        
+        return null;
     }
 
     /**
@@ -48,7 +49,7 @@ class Cpf extends Document {
      * @return array
      */
 
-    public static function validateArray($array) {
+    public static function validateArray(array $array) : array {
         $ret = [];
         foreach($array as $element) {
             if($number = self::validate($element)){

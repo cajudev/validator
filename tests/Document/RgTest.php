@@ -19,7 +19,7 @@ class RgTest extends TestCase {
 	}
 	
 	public function test_validate() {
-		self::assertFalse(Rg::validate("43.230.111-9"));
+		self::assertNull(Rg::validate("43.230.111-9"));
 		self::assertInstanceOf(Rg::class, Rg::validate("43.230.111-2"));
 	}
 
