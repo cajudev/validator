@@ -18,13 +18,14 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^7",
-        "php-coveralls/php-coveralls": "^2"
+        "php-coveralls/php-coveralls": "^2",
+        "cajudev/csvparser": "*"
     },
     "autoload": {
         "psr-4": {
             "Cajudev\\Validator\\": [
-                "src/",
-                "tests/"
+                "app/src/",
+                "app/tests/"
             ]
         }
     }

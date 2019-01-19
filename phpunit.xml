@@ -6,13 +6,13 @@
 			stopOnFailure="true">
 			<testsuites>
 				<testsuite name="Unit Tests">
-					<directory>tests</directory>
+					<directory>app/tests</directory>
 				</testsuite>
 			</testsuites>
 
 		<filter>
 			<whitelist>
-				<directory suffix=".php">src</directory>
+				<directory suffix=".php">app/src</directory>
 				<exclude>
 					<directory suffix=".php">vendor/</directory>
 				</exclude>

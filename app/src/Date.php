@@ -140,12 +140,12 @@ class Date
 
     public function getDate(string $pattern = '') : string
     {
-        if ($pattern == '') {
+        if ($pattern === '') {
             return $this->date;
-        } else {
-            self::validatePattern($pattern);
-            return date($pattern, $this->timestamp);
         }
+
+        self::validatePattern($pattern);
+        return date($pattern, $this->timestamp);
     }
 
     /**
