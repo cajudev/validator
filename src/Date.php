@@ -1,4 +1,5 @@
-<?php namespace Cajudev\Validator;
+<?php
+namespace Cajudev\Validator;
 
 /**
  *
@@ -7,7 +8,8 @@
  *  @author Richard Lopes
  */
 
-class Date {
+class Date
+{
 
     const REGEX = [
         "d" => "(?<day>[3][0-1]|[1-2][0-9]|0[1-9])",
@@ -24,66 +26,72 @@ class Date {
     private $year;
     private $timestamp;
 
-    private function __construct($params = []) {
+    private function __construct($params = [])
+    {
         $this->date      = $params[0];
         $this->day       = $params['day'];
         $this->month     = $params['month'];
         $this->year      = $params['year'];
         $this->timestamp = strtotime($this->year . '-' . $this->month . '-' . $this->day);
     }
-    
+
     /**
      * validate
      *
-     * @param  mixed $date
-     * @param  mixed $pattern
+     * @param  string $date
+     * @param  string $pattern
      *
+     * @return Date
      */
 
-    public static function validate($date, $pattern) : ?Date {
+    public static function validate(string $date, string $pattern) : ?Date
+    {
         self::validatePattern($pattern);
 
         $regex = self::getRegex($pattern);
-        if(preg_match($regex, $date, $match)) {
-            if(checkdate($match['month'], $match['day'], $match['year'])) {
+        if (preg_match($regex, $date, $match)) {
+            if (checkdate($match['month'], $match['day'], $match['year'])) {
                 return new Date($match);
             }
         }
 
         return null;
     }
-    
 
     /**
      * validateArray
      *
-     * @param  mixed $array
-     * @param  mixed $pattern
+     * @param  array $array
+     * @param  string $pattern
      *
+     * @return array
      */
 
-    public static function validateArray(array $array, $pattern) : array {
+    public static function validateArray(array $array, string $pattern) : array
+    {
         $ret = [];
-        foreach($array as $element) {
-            if($date = self::validate($element, $pattern)) {
+        foreach ($array as $element) {
+            if ($date = self::validate($element, $pattern)) {
                 $ret[] = $date;
             }
         }
         return $ret;
     }
 
-    private static function validatePattern($pattern) {
-        if(!preg_match("/^[djmny][.\/-][djmny][.\/-][djmny]$/i", $pattern)) {
+    private static function validatePattern(string $pattern)
+    {
+        if (!preg_match('/^[djmny][.\/-][djmny][.\/-][djmny]$/i', $pattern)) {
             throw new \Exception("Illegal pattern input");
         }
     }
 
-    private static function getRegex($pattern) {
+    private static function getRegex(string $pattern)
+    {
         $regex  = '/^';
         $regex .= self::REGEX[$pattern[0]];
-        $regex .= "\\" . $pattern[1];
+        $regex .= '\\' . $pattern[1];
         $regex .= self::REGEX[$pattern[2]];
-        $regex .= "\\" . $pattern[3];
+        $regex .= '\\' . $pattern[3];
         $regex .= self::REGEX[$pattern[4]];
         $regex .= '$/';
         return $regex;
@@ -95,7 +103,8 @@ class Date {
      * @return string
      */
     
-    public function getDay() {
+    public function getDay() : string
+    {
         return $this->day;
     }
 
@@ -105,7 +114,8 @@ class Date {
      * @return string
      */
     
-    public function getMonth() {
+    public function getMonth() : string
+    {
         return $this->month;
     }
 
@@ -115,22 +125,24 @@ class Date {
      * @return string
      */
     
-    public function getYear() {
+    public function getYear() : string
+    {
         return $this->year;
     }
 
     /**
      * getDate
      * 
-     * @param $pattern
+     * @param string $pattern
      *
      * @return string
      */
 
-    public function getDate($pattern = '') {
-        if($pattern == '') {
+    public function getDate(string $pattern = '') : string
+    {
+        if ($pattern == '') {
             return $this->date;
-        }else {
+        } else {
             self::validatePattern($pattern);
             return date($pattern, $this->timestamp);
         }
@@ -142,7 +154,8 @@ class Date {
      * @return string
      */
 
-    public function getTimestamp() {
+    public function getTimestamp() : string
+    {
         return $this->timestamp;
     }
 }

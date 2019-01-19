@@ -1,7 +1,8 @@
-<?php namespace Cajudev\Validator;
+<?php
+namespace Cajudev\Validator;
 
-use Cajudev\Validator\Utils\Masker;
 use Cajudev\Validator\Utils\Cleaner;
+use Cajudev\Validator\Utils\Masker;
 
 /**
  *
@@ -10,7 +11,8 @@ use Cajudev\Validator\Utils\Cleaner;
  *  @author Richard Lopes
  */
 
-class CreditCard {
+class CreditCard
+{
 
     private const REGEX = [
         'elo' => '/(?x) ^((?<bin>
@@ -38,7 +40,8 @@ class CreditCard {
     private $number;
     private $flag;
 
-    private function __construct($number, $flag) {
+    private function __construct(string $number, string $flag)
+    {
         $this->number = $number;
         $this->flag   = $flag;
     }
@@ -46,15 +49,16 @@ class CreditCard {
     /**
      * validate
      *
-     * @param  mixed $number
+     * @param  string $number
      *
      * @return CreditCard
      */
 
-    public static function validate($number) : ?CreditCard {
+    public static function validate(string $number) : ?CreditCard
+    {
         Cleaner::cleanNumber($number);
 
-        if(self::checkLuhnAlgorithm($number) && $flag = self::findFlag($number)) {
+        if (self::checkLuhnAlgorithm($number) && $flag = self::findFlag($number)) {
             return new CreditCard($number, $flag);
         }
 
@@ -64,36 +68,38 @@ class CreditCard {
     /**
      * validateArray
      *
-     * @param  mixed $array
-     * @param  mixed $pattern
+     * @param  array $array
      *
      * @return array
      */
 
-    public static function validateArray(array $array) : array {
+    public static function validateArray(array $array) : array
+    {
         $ret = [];
-        foreach($array as $element) {
-            if($number = self::validate($element)) {
+        foreach ($array as $element) {
+            if ($number = self::validate($element)) {
                 $ret[] = $number;
             }
         }
         return $ret;
     }
 
-    private static function findFlag($number) {
-        foreach(self::REGEX as $key => $value) {
-            if(preg_match($value, $number)) {
+    private static function findFlag(string $number)
+    {
+        foreach (self::REGEX as $key => $value) {
+            if (preg_match($value, $number)) {
                 return $key;
             }
         }
         return false;
     }
 
-    private static function checkLuhnAlgorithm($number) {
+    private static function checkLuhnAlgorithm(string $number) : bool
+    {
         $reverse = strrev($number);
 
 		for ($i = 1, $size = strlen($reverse); $i < $size; $i++) {
-            if($i % 2 == 1) {
+            if ($i % 2 == 1) {
                 $double = $reverse[$i] * 2;
                 $reverse[$i] = $double > 9 ? $double - 9 : $double;
             }
@@ -108,21 +114,23 @@ class CreditCard {
      * @return string
      */
 
-    public function getFlag() { 
+    public function getFlag() : string
+    { 
         return $this->flag;
     }
 
     /**
      * getNumber
      *
-     * @param  mixed $formatted
+     * @param  bool $formatted
      *
      * @return string
      */
 
-    public function getNumber($formatted = true) {
-        if($formatted){
-            switch(strlen($this->number)) {
+    public function getNumber(bool $formatted = true) : string
+    {
+        if ($formatted) {
+            switch (strlen($this->number)) {
                 case 16: return Masker::mask("#### #### #### ####", $this->number);
                 case 15: return Masker::mask("#### ###### #####", $this->number);
                 case 14: return Masker::mask("#### ###### ####", $this->number);
