@@ -1,7 +1,7 @@
-<?php namespace Cajudev\Validator\Document;
+<?php
+namespace Cajudev\Validator\Document;
 
 use Cajudev\Validator\Document\Document;
-
 use Cajudev\Validator\Utils\Masker;
 use Cajudev\Validator\Utils\Cleaner;
 
@@ -12,57 +12,63 @@ use Cajudev\Validator\Utils\Cleaner;
  *  @author Richard Lopes
  */
 
-class Cpf extends Document {
+class Cpf extends Document
+{
 
     private const REGEX = '/^(?!(\d)\1{10})\d{11}$/';
 
-    private function __construct($number){
+    private function __construct(string $number)
+    {
         parent::__construct($number);
     }
     
     /**
      * validate
      *
-     * @param  mixed $number
+     * @param  string $number
      *
      * @return Cpf
      */
 
-    public static function validate($number) : ?Cpf {
+    public static function validate(string $number) : ?Cpf
+    {
         Cleaner::cleanNumber($number);
 
-        if(preg_match(self::REGEX, $number)) {
-            if(self::getDigit(1, $number) == $number[9] && self::getDigit(2, $number) == $number[10]){
-                return new Cpf($number);
-            }
+        if (!preg_match(self::REGEX, $number)) {
+            return null;
+        }
+
+        if (self::getDigit(1, $number) !== $number[9] || self::getDigit(2, $number) !== $number[10]) {
+            return null;
         }
         
-        return null;
+        return new Cpf($number);
     }
 
     /**
      * validateArray
      *
-     * @param  mixed $array
-     * @param  mixed $pattern
+     * @param  array $array
      *
      * @return array
      */
 
-    public static function validateArray(array $array) : array {
+    public static function validateArray(array $array) : array
+    {
         $ret = [];
-        foreach($array as $element) {
-            if($number = self::validate($element)){
+        foreach ($array as $element) {
+            if ($number = self::validate($element)) {
                 $ret[] = $number;
             }
         }
         return $ret;
     }
     
-    protected static function getDigit($k, $num) {
+    protected static function getDigit(int $k, string $num) : string
+    {
         $sum = 0;
 
-        for($i = 0, $j = 9 + $k; $i < 8 + $k; $i++, $j--) {
+        for ($i = 0, $j = 9 + $k; $i < 8 + $k; $i++, $j--) {
             $sum += $num[$i] * $j;
         }
 
@@ -72,12 +78,13 @@ class Cpf extends Document {
     /**
      * getNumber
      *
-     * @param  mixed $formatted
+     * @param  bool $formatted
      *
      * @return string
      */
 
-    public function getNumber($formatted = true) {
+    public function getNumber(bool $formatted = true) : string
+    {
         return $formatted ? Masker::mask("###.###.###-##", $this->number) : $this->number;
     }
 }

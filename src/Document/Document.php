@@ -1,4 +1,5 @@
-<?php namespace Cajudev\Validator\Document;
+<?php
+namespace Cajudev\Validator\Document;
 
 /**
  *
@@ -7,19 +8,21 @@
  *  @author Richard Lopes
  */
 
-abstract class Document {
+abstract class Document
+{
 
     protected $number;
 
-    protected function __construct($number) {
+    protected function __construct(string $number)
+    {
         $this->number = $number;
     }
 
-    protected abstract static function validate($number);
+    abstract protected static function validate(string $number);
 
-    protected abstract static function validateArray(array $array) : array;
+    abstract protected static function validateArray(array $array) : array;
     
-    protected abstract static function getDigit($k, $num);
+    abstract protected static function getDigit(int $k, string $num);
 
-    protected abstract function getNumber($formatted = true);
+    abstract protected function getNumber(bool $formatted = true);
 }
