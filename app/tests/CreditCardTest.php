@@ -11,7 +11,7 @@ class CreditCardTest extends TestCase
 
     public function setUp()
     {
-        $this->cards = json_decode(file_get_contents(__DIR__."/files/creditcards.json"), true);
+        $this->cards = json_decode(file_get_contents(getcwd() . "/storage/creditcard/number-list.json"), true);
     }
     
     public function test_validate()
