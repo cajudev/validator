@@ -134,7 +134,7 @@ class CreditCard
         self::$regex['diners']     = '/^3(?:0[0-5]|[68][0-9])[0-9]{11}$/';
         
         //extracting all elo bins from oficial file
-        $dir = getcwd() . '/storage/creditcard/bin-table-elo.csv';
+        $dir = __DIR__ . '/../../storage/creditcard/bin-table-elo.csv';
         $csv = new CsvParser($dir);
         $bins = $csv->setDelimiter(';')
                     ->setColumns(['number'])
