@@ -14,12 +14,12 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-		"php": "^7"
+	"php": "^7",
+	"cajudev/csvparser": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^7",
-        "php-coveralls/php-coveralls": "^2",
-        "cajudev/csvparser": "*"
+        "php-coveralls/php-coveralls": "^2"
     },
     "autoload": {
         "psr-4": {
